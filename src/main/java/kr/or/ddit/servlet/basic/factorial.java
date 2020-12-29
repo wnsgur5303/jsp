@@ -2,12 +2,13 @@ package kr.or.ddit.servlet.basic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-public class factorial {
-	private static final Logger Logger = LoggerFactory.getLogger(factorial.class);
+public class Factorial {
+	private static final Logger Logger = LoggerFactory.getLogger(Factorial.class);
 	
 	public static void main(String[] args) {
-		factorial factorial = new factorial();
+		Factorial factorial = new Factorial();
 		int result = factorial.calculate(5);
+//		int fac = 1;
 		
 		if(result == 120) {
 			Logger.debug("success");
@@ -15,6 +16,8 @@ public class factorial {
 		else {
 			Logger.debug("fail");
 		}
+		
+		result = factorial.calculate(0);
 		
 		if(result == 1) {
 			Logger.debug("success");
@@ -33,13 +36,11 @@ public class factorial {
 //		return fac;
 //	}
 	
-	private int calculate(int n) {
-		int fac = 1;
-		
-		if(n==1)
+	public int calculate(int n) {
+		if(n<=1)
 			return 1;
 		else
-			return n* calculate(n--);
+			return n * calculate(--n);
 	}
 	
 
