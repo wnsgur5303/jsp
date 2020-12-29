@@ -60,6 +60,8 @@ public class BasicServlet extends HttpServlet {
 		// *.jsp, *.jspx url-pattern에 따라 jsp라는 이름의 서블릿에서 처리(JspServlet)
 		//localhost/doc/20201223.txt 정적자료 ==> 
 
+		
+		
 		PrintWriter pw = resp.getWriter();
 		pw.println("<html>");
 		pw.println("	<head>");
