@@ -50,14 +50,12 @@ public class FactorialTest {
 		logger.debug("setup");
 		factorial = new Factorial();
 	}
-	
-	
+		
 	@Test
 	public void test1() {	
 		logger.debug("test1");
 		//테스트 메소드가 다른메소드 테스트에 영향을 주어서는 안된다.
 		/***Given***///현재 테스트 환경에서 주어진 조건을 기술
-
 
 		/***When***///테스트를 검증하고자 하는 행위(mathod call)
 		int result = factorial.calculate(5);

@@ -29,5 +29,10 @@
      <url-pattern>/basicServlet</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+     <servlet-name>LoginController</servlet-name>
+     <servlet-class>kr.or.ddit.web.LoginController</servlet-class>
+     <load-on-startup>1</load-on-startup>
+  </servlet>
   
 </web-app>

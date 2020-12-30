@@ -16,7 +16,7 @@
 	request.getServerPort() : 리턴값을 출력<br>
 	*/
 	%>
-
+	
 	request.getContentType(): <%=request.getContentType() %> <br>
 	request.getMethod()		: <%=request.getMethod() %><br>
 	request.getRequesURI() 	: <%=request.getRequestURI() %><br>
