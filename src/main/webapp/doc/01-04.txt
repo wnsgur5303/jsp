@@ -1,0 +1,228 @@
+
+tcp 연결성 : 프로세스 시작부터 종료까지 연결
+
+		연결
+		요청
+클라이언트	->|
+  		처리
+
+		연결
+		응답
+		<-
+
+
+		연결
+
+2의10승 1024
+
+   2의16승
+
+2의 10승 x 6승
+1024 * 64
+
+한서버에
+64000정도 연결가능
+
+
+Http비연결성:요청시 연결, 응답 후 연결종료
+
+클라이언트	연결종료		서버
+		요청(naver.com)
+		->
+
+		응답(html 화면 출력 (랜더링))
+		<-
+		연결종료
+
+		요청
+		->
+		연결
+		<-응답
+
+http프로토콜 규약 
+http프로토콜의 특징
+1. 비연결성
+	-요청을 보래고 응답을 받게 되면 서버와의 연결은 끊어 진다
+	-서버로 재요청시 서버는 클라이언트가 누구인지 알 수 있도록 session과 cookie를 이용
+
+2.웹 브라우저는 서버로 요청시 해당 서버(도메인)에 설정된 쿠키값을 형상상 같이 전송한다.
+	-서버가 클라이언트가 누구인지 식별할때 사용
+	-cookie:브라우저에 저장되는 정보
+
+3.java기반 서버는 요청을 받게 되면 해당 요청의 쿠키 정보중에
+ JSESSION라는 쿠키가 있는지 확인한다.
+ 
+ JSESSION 쿠키가 없을 경우
+ 서버는 신규 접속 요청이라고 판단, SESSION을 새롭게 만들고 응답을 새성할 때
+ SESSIONID(JSESSIONID)를 응답 헤더에 포장하고
+ 해당 응답을 받은 브라우저는 J_SESSION 쿠키 값을 브라우저에 저장한다
+
+ JSESSIONID 쿠키가 있을 경우
+ JSESSIONID에 해당하는 SESSION을 사용(기본 접속한 사용자로 인식)
+
+
+쿠키 보는법
+개발자모드에서 어플리케이션 쿠키
+
+쿠키는 보안에 취약함.
+딜리트로 지울수도, 그냥 임의로 만들 수 있음.
+JSESSIONID 쿠키가 있냐 없는냐로 새로운 사용자로 인식
+<이름을 다르게 해서 만들 수 있음
+
+
+
+요청전
+최초 요청	-> 클라이언트1의 세션  |  최초 요청시 세션 생성
+두번째 요청 -> 클라이언트1의 세션 | 이후 생성된 세션 사용
+세션
+(사용자..)
+--(사진참고)
+요청전 -> 클라이언트1의 세션
+최초 요청	-> 클라이언트1의 세션  |  최초 요청시 세션 생성
+	    클라이언트2의 세션
+두번째 요청 -> 클라이언트1의 세션 | 이후 생성된 세션 사용
+	       클라이언트2의 세션
+
+웹에서 사용자(client)란? : 웹브라우저
+동일한 인물?(X)
+
+cookie 길찾기 ==> 동화
+
+
+스코프:웹 어플리케이션에서 객체(속성, 어트리뷰트)를 유지/공유하는 역역
+속성:클라이언트의 요청을 처리하는 과정에서 서블릿/jsp 사이에서 공유하는 정보
+
+-사진 참고해서 테이블 -
+
+속성과 파라미터 잘 구분해야함
+
+page 스코프는 서블릿에는 없는 개념이다. 가리키는 jsp pageContext
+jsp페이지 내에서만 사용
+
+빈도로 따지면 request
+	session
+이 많이쓰임
+
+하나의 페이지라도 jsp가 여러개로 쪼개질 수 있다.
+
+잘알아둬야 하는부분..
+리다이렉트 부분.. 속성.? 잠깐 보고 넘어간.
+
+----2교
+어플리케이션 속성이 겟서블릿 콘텍스트. 
+용어들어대해 잘 알아둬야함.
+-사진-
+스코프의 이퀄? 자바
+page - 지역변수
+req 지변
+sess 인스턴스 변수
+app static변수
+
+
+스코프 그림
+페이지는 잠깐 빠져있다.
+
+리퀘스트,세션,어플리케이션
+전부 서버에있음.
+표현에만 쓰려고 클라이언트에 붙여있다.실제론 서버에있는것
+
+-페이지추가그림-
+
+
+속성 : 요청을 처리하는 과정에서 서블릿/jsp 사이에서 공유하는 정보
+scope : 속성을 담을수 있는 영역, 객체
+
+scope 객체
+page(pageContext) : 해당 jsp 페이지 내에서만 유효한 공간( 자바의 block 안에 선언된 지역변수)
+request(HttpServletRequest) : 요청이 처리될 때까지만 유효한 공간(자바의 지역변수)
+session(HttpSession) : 세션이 유효한 동안에 유지되는 공간(자바의 인스턴스 객체)
+application(ServletContext) : 웹 어플리케이션에서 하나만 유지되는 공간(자바의 static변수)
+
++++++++
+scope 객체 실습
+
+웹브라우저로 다음 주소에 접속: localhost/scope (GET)
+해당 요청을 처리해줄 servlet생성(kr.or.ddit.servlet.scope.Scope.java)
+해당 요청에 대해서는 화면을 webapp/jsp/scope.jsp로 응답생성 위임
+
+scope.jsp에는 하나의 input태그(name-scope) 와 submit 버튼 생성
+전송 메소드는 post, 전송주소는 /scope
+
+Scope.java의 doPost에서는 요청 파라미터를 scope 파라미터를 확인하여
+request,session,application scope에 다음과 같은속성을 저장
+
+
+request : 속성명=request, 속성값, 속성값 = scope파라미터값 + "_request"
+
+session : 속성명=session, 속성값, 속성값 = scope파라미터값 + "_session"
+
+application : 속성명=application, 속성값, 속성값 = scope파라미터값 + "_application"
+
+속성 설정이 끝나면 webapp/jsp/scopeResult.jsp로 forword
+scopeResult.jsp 에서는 Scope servlet에서 설정한 3개의 속성을
+
+속성명 : 속성값
+속성명 : 속성값
+속성명 : 속성값 형식으로 화면에 출력
+
+scope 객체의 속성관련 메소드
+속성 조회: 스코프.getAttribute("속성명"), 반환타입 : Object
+	*** 비고 getParameter("파라미터명"), 반환타입 : String
+
+속성 저장 : 스코프객체.setAttribute("속성명","속성값"):void
+
+속성 삭제 : 스코프객체.removeAttribute("속성명"), 반환타입 :void
+
+속성 이름 검색 : 스코프객체:getAttributeNames(), 반환타입 : Enmeration
+
+
+텍스트
+
+1. 1)최초 접속
+localhost/Scope 접속
+input tag에 brown 값 입력후 전송 버튼 클릭
+결과 화면 확인
+request : brown_request
+session : brown_session
+application : brown_application
+
+2. 1)번과 같은 브라우저를 사용하여 
+lcalhost/jsp/scopeResult.jsp로 접속시
+request:???
+session:???
+application:???
+
+
+
+3. 1)번과 다른 브라우저를 사용하여
+lcalhost/jsp/scopeResult.jsp로 접속시
+request:???
+session:???
+application:???
+
+4 3번과 동일한 브라우저를 사용하여
+input tag에 sally 값 입력후 전송
+request : sally_request
+session : sally_session
+application : sally_application
+
+5 1번과 동일한 부라우저를 사용하여
+lcalhost/jsp/scopeResult.jsp로 접속시
+request:???
+session:brown_session
+application:sally_session
+
+1:크롬
+2:엣지
+어플리케이션은 웹 서버 하나에 사용되는..  고유?
+
+
+4교시
+
+-사진 보고 서버프로그램 구현-	
+다 정리하고 커밋하자.
+
+오늘 배운것중에 중요한거 http프로토콜 에서 사용자 식별 프로세스 
+그림으로 그려볼 수 있으면 됨 
+request,session,application
+알고 있어야한다.

@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BasicServlet extends HttpServlet {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(BasicServlet.class);
 
 	public void init() throws ServletException {
@@ -26,17 +26,17 @@ public class BasicServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		logger.debug("basicServlet.doGet()");
-		
-		
-		//만약에 로그 레벨을 디버그보다 높은 레벨로 설정 할 경우
-		//로그를 생성하지는 않지만 메소드 인자인 문자열+문자열  ==>문자열 결합 연산은 발생한다.
+
+		// 만약에 로그 레벨을 디버그보다 높은 레벨로 설정 할 경우
+		// 로그를 생성하지는 않지만 메소드 인자인 문자열+문자열 ==>문자열 결합 연산은 발생한다.
 
 		logger.debug("basicServlet.doGet() userid paramter : " + req.getParameter("userid"));
-		
+
 		resp.setContentType("text/html;charset=utf-8");
 
-		logger.debug("basicServlet.doGet() userid paramter :{}{}",req.getParameter("userid"), req.getParameter("password"));
-		
+		logger.debug("basicServlet.doGet() userid paramter :{}{}", req.getParameter("userid"),
+				req.getParameter("password"));
+
 		// 재정의
 		// 요청을 생성할때마다 서버의 현재 시간이 달라진다
 		// new Date 부분을 db에서 조회한 데이터라고 생각해보면
@@ -58,10 +58,8 @@ public class BasicServlet extends HttpServlet {
 		// localhost/basicServlet ==> BasicServlet의 service메소드를 통해 응답생성
 		// localhost/index.jsp ==> server설정에 있는 web.xml에 등록된
 		// *.jsp, *.jspx url-pattern에 따라 jsp라는 이름의 서블릿에서 처리(JspServlet)
-		//localhost/doc/20201223.txt 정적자료 ==> 
+		// localhost/doc/20201223.txt 정적자료 ==>
 
-		
-		
 		PrintWriter pw = resp.getWriter();
 		pw.println("<html>");
 		pw.println("	<head>");

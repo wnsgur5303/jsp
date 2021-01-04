@@ -5,16 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-<%-- 개인정보를 전송 하므로  url에 노출되지 않도록 request body 영역에 파라미터를 전송 ==> method=post"--%>
-<form action="<%=request.getContextPath() %>/loginController" method="post">
-user id:<input type="text" name = "userid" value="123"><br>
-user id:<input type="text" name = "userid" value="456"><br>
-password:<input type="password" name="pass" value="789"><br>
-<input type="submit" value="전송">
-</form>
+    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" action="<%=request.getContextPath() %>/loginController" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputid" class="sr-only">userid</label>
+        <input type="text" id="inputEmail" class="form-control" 
+        placeholder="사용자 아이디" required autofocus name = "userid" value="brown">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="pass" value="brownpass">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
 
 </body>
 </html>
