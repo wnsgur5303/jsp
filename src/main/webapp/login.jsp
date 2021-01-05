@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+<title>Insert title here123</title>
+    <%@include file="/common/common_lib.jsp"%>
+    <!--common_lib.jsp 의 내용을 지금 기술되는 부분에 코드를 복사해서 붙여넣기 -->
 	<link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
 
   </head>

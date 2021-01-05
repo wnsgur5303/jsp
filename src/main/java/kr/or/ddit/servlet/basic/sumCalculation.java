@@ -14,41 +14,30 @@ import org.slf4j.LoggerFactory;
 /**
  * Servlet implementation class sumCalculation
  */
-@WebServlet("/sumCalculation")
+@WebServlet("/sumcalculation")
 public class sumCalculation extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(sumCalculation.class);
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public sumCalculation() {
         super();
-        // TODO Auto-generated constructor stub
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.getRequestDispatcher("jsp/sumcalculation.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int start = Integer.parseInt(request.getParameter("start"));
 		int end = Integer.parseInt(request.getParameter("end"));
-		int sum = 0;
+		int sumResult = 0;
 		for(int i = start; i < end+1; i++) {
-			sum += i;
+			sumResult += i;
 		}
-		logger.debug("{}",sum);
-		
-		String sums = Integer.toString(sum);
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("sumResult", sums);
-		
-		request.getRequestDispatcher("jsp/sumResult.jsp").forward(request, response);
+		logger.debug("합계 {}", sumResult);	
+		HttpSession session = request.getSession();		
+		session.setAttribute("sumResult", sumResult);	
+		request.getRequestDispatcher("/jsp/sumResult.jsp").forward(request, response);
 	}
 
 }

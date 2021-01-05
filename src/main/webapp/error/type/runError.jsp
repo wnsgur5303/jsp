@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	webapp/index.jsp ==> webapp/image/brown.png
-	webapp/imags/brown.png
-	
-	<img src="<%=request.getContextPath()%>/image/brown.png"/>
-	
-	
+에러발생
 </body>
 </html>

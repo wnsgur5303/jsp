@@ -7,12 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	webapp/index.jsp ==> webapp/image/brown.png
-	webapp/imags/brown.png
-	
-	<img src="<%=request.getContextPath()%>/image/brown.png"/>
-	
-	
+	<%
+	int a = 3;
+	int b = 0;
+	int c = a/b;
+	%>
 </body>
 </html>
