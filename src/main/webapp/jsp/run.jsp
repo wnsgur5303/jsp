@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-if( 1==1){
+if(1==1){//임의로 에러 발생시키기 if(1=1)같은거 안하면 컴파일 부터 문제가 생겨서 500번 에러
 throw new RuntimeException();
 }
 %>
