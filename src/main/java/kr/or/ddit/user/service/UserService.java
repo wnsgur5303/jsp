@@ -37,7 +37,7 @@ public class UserService implements UserServiceI{
 //		map.put("useList", userList);
 //		map.put("userCnt", userCnt);
 //		return map;
-	@Override
+	@Override//Map<String,Object>
 	public List<UserVo> selectPagingUser(PageVo vo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<UserVo> userList = userDao.selectPagingUser(vo);

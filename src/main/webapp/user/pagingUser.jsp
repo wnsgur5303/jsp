@@ -62,9 +62,15 @@
 		</div>
 
 		<a class="btn btn-default pull-right" href="<%=request.getContextPath() %>/insertUser">사용자 등록</a>
-
+	
 		<div class="text-center">
 			<ul class="pagination">
+			
+			
+			<!-- pagination 값이 4이므로 1부터 4까지 4번 반복된다.
+				햔재 사용자수	: 16명
+				페이지 사이즈	: 5
+				전체 페이지 수	: 4페이지 -->
 			<%int cnt =(int)(request.getAttribute("allpage")); 
 				for(int i = 1; i < cnt+1; i++){%>
 				<li><a href="<%=request.getContextPath() %>/pagingUser?page=<%=i%>&pageSize=5"><%=i%></a></li>

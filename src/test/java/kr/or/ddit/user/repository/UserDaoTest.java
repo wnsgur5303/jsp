@@ -3,12 +3,14 @@ package kr.or.ddit.user.repository;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.user.model.UserDao;
 import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.service.UserService;
 
 public class UserDaoTest {
 
@@ -54,7 +56,9 @@ public class UserDaoTest {
 		
 		/***When***/userDao.selectAllUser();
 		List<UserVo> user = userDao.selectPagingUser(pageVo);
+		/* Map<String, Object> map = userService. */
 
+		
 		/***Then***/
 		assertEquals(5, user.size());
 	}
