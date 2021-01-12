@@ -13,8 +13,8 @@
    
     <%@include file="/common/common_lib.jsp"%>
 	<link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
-		<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+	<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
+	<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
 </head>
 
 <body>

@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.service.UserService;
+import kr.or.ddit.user.service.UserServiceI;
+
+
 /*web.xml에 요청하는 서블릿,서블릿-mapping을 어노테이션을 통해 설정하는 방법*/
 @WebServlet("/loginController")
 public class LoginController extends HttpServlet{
@@ -25,7 +30,7 @@ public class LoginController extends HttpServlet{
 	//get으로 보내온, post 로 보내온
 	//리퀘스트 객체에대해 배우고있다.
 	//저번시간은 부가적인 정보에 대한거고 오늘은 파라미터에 대해.
-	
+	private UserServiceI userService = new UserService();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -109,8 +114,11 @@ public class LoginController extends HttpServlet{
 		String userid = req.getParameter("userid");
 		String pass = req.getParameter("pass");
 		
-		if(userid.equals("brown") && pass.equals("brownpass")) {
-			req.setAttribute("userid",userid);
+		UserVo user = userService.selectUser(userid);
+		
+		//로그인 성공-> service를 통해 데이터베이스에 저장된 값과 일치할 때
+		// session에 데이터베이스에서 조회한 사용자 정보(userVo)를 저장
+		if(user != null && pass.equals(user.getPass())) {
 		req.getRequestDispatcher("main.jsp").forward(req, resp);
 		}
 		else {
