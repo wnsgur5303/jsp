@@ -62,6 +62,4 @@ public class UserService implements UserServiceI{
 		return userDao.selectAllUserCnt();
 	}
 	
-	
-	
 }

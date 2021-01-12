@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.common.model.PageVo"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,17 +15,36 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
-
-<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
-<script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
-    	<%@include file="/common/common_lib.jsp"%>
-		<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+	<%@include file="/common/common_lib.jsp"%>
+<%-- 	<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet">
+	<script src="/js/bootstrap.js"></script> --%>
+	<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
+	<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
 		
+		
+		
+		
+<script type="text/javascript">
+//문서 로딩이 완료되고 나서 실행되는 영역
+	$(function(){
+		
+		$(".user").on("click",function(){
+			
+			//this : 클릭 이베트가 발생한 element
+			//data-userId ==> data-userid, 속성명은 대소분자 무시하고 소분자로 인식
+			var userid = $(this).data("userid");
+			$("#userid").val(userid);
+			$("#frm").submit();
+		});
+		
+	});
+</script>		
 </head>
 
 <body>
-
+<form id ="frm" action="<%=request.getContextPath() %>/user">
+	<input type="hidden" id="userid" name = "userid" value=""/>
+</form>
 	
 <%@include file = "/common/header.jsp"%>
 
@@ -50,7 +70,7 @@
 				<%
 				for(UserVo vo : list){ 
 				%>
-				<tr>
+				<tr class ="user" data-userid="<%=vo.getUserid() %>">
 					<td><%=vo.getUserid() %></td>
 					<td><%=vo.getUsernm() %></td>
 					<td><%=vo.getAlias() %></td>
@@ -71,10 +91,24 @@
 				햔재 사용자수	: 16명
 				페이지 사이즈	: 5
 				전체 페이지 수	: 4페이지 -->
-			<%int cnt =(int)(request.getAttribute("allpage")); 
-				for(int i = 1; i < cnt+1; i++){%>
-				<li><a href="<%=request.getContextPath() %>/pagingUser?page=<%=i%>&pageSize=5"><%=i%></a></li>
-			<% }%>
+				<%PageVo vo = (PageVo)request.getAttribute("pageVo"); %>
+				<li class="prev">
+				<a href="<%=request.getContextPath() %>/pagingUser?page=1&pageSize=<%=vo.getPageSize() %>">«</a>
+				</li>
+				<%int cnt =(int)(request.getAttribute("allpage"));
+				for(int i = 1; i < cnt+1; i++){
+				if(vo.getPage() == i){%>
+					
+				<li class="active"><span><%=i%></span></li>
+					
+				<%}else{
+				%>
+				
+				<li><a href="<%=request.getContextPath() %>/pagingUser?page=<%=i%>&pageSize=<%=vo.getPageSize() %>"><%=i%></a></li>
+			<% }}%>
+			<li class="next">
+				<a href="<%=request.getContextPath() %>/pagingUser?page=<%=cnt%>&pageSize=<%=vo.getPageSize() %>">»</a>
+			</li>
 			</ul>
 		</div>
 	</div>

@@ -14,10 +14,10 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
+<%@include file="/common/common_lib.jsp"%>
 
-<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
-<script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
-    	<%@include file="/common/common_lib.jsp"%>
+		<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+		<script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
 		<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
 		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
 		

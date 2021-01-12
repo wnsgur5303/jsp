@@ -9,6 +9,13 @@ public class UserVo {
 	private String pass;
 	private Date reg_dt;//TO_CHAR(reg_dt,'YYYY.MM.DD') 방법도 있지만 번거롭고 문제가있다.
 	private String alias;
+	private String addr1;
+	private String addr2;
+	private String zipcode;
+	private String filename;
+	private String realfilename;
+	
+	
 	//getter setter String 
 	//대다수의 프레임워크는 기본 생성자를 필요로 한다.
 	public UserVo() {		
@@ -58,6 +65,36 @@ public class UserVo {
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
-
+	public String getAddr1() {
+		return addr1 == null ? "" : addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2 == null ? "" : addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+	public String getZipcode() {
+		return zipcode == null ? "" : zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getFilename() {
+		return filename == null ? "" : filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public String getRealfilename() {
+		return realfilename == null ? "" : realfilename;
+	}
+	public void setRealfilename(String realfilename) {
+		this.realfilename = realfilename;
+	}
+	
 	
 }

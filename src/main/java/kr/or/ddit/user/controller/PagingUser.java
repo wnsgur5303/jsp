@@ -68,7 +68,7 @@ public class PagingUser extends HttpServlet {
 //			pageSize = Integer.parseInt(request.getParameter("pageSize"));
 //		}
 		//선생님이 하신것 
-		PageVo page_Vo = new PageVo(page,pageSize);
+		PageVo pageVo = new PageVo(page,pageSize);
 		
 //		PageVo pageVo = new PageVo();
 //		pageVo.setPage(page);
@@ -76,9 +76,10 @@ public class PagingUser extends HttpServlet {
 		
 //		Map<String, Object> map = userService.selectPagingUser(pageVo);
 		
-		List<UserVo> userList = userDao.selectPagingUser(page_Vo);
+		List<UserVo> userList = userDao.selectPagingUser(pageVo);
 		int cnt = userDao.selectAllUserCnt();
 		int allpage = (int)Math.ceil((double)cnt/pageSize);
+		request.setAttribute("pageVo", pageVo);
 		
 		request.setAttribute("allpage", allpage);
 		request.setAttribute("userList", userList);

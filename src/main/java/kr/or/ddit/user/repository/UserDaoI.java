@@ -23,5 +23,4 @@ public interface UserDaoI {
 	int selectAllUserCnt();
 	
 	int insertUser(UserVo vo);
-	
 }

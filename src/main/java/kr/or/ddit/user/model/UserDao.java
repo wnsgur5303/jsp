@@ -67,7 +67,6 @@ public class UserDao implements UserDaoI{
 		
 		return userCnt;
 	}
-	
-	
+
 
 }
