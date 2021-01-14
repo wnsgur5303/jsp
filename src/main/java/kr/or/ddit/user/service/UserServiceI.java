@@ -14,5 +14,7 @@ public interface UserServiceI {
 	
 	int selectAllUserCnt();
 	
-	int insertUser(UserVo vo);
+	int modifyUser(UserVo uservo);
+	
+	int registUser(UserVo uservo);
 }

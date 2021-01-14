@@ -81,7 +81,7 @@
 			</table>
 		</div>
 
-		<a class="btn btn-default pull-right" href="<%=request.getContextPath() %>/insertUser">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="../user/registUser.jsp">사용자 등록</a>
 	
 		<div class="text-center">
 			<ul class="pagination">

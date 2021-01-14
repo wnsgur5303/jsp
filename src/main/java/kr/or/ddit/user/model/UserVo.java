@@ -20,6 +20,18 @@ public class UserVo {
 	//대다수의 프레임워크는 기본 생성자를 필요로 한다.
 	public UserVo() {		
 	}	
+	public UserVo(String userid, String usernm, String pass, Date reg_dt, String alias, String addr1, String addr2,
+			String zipcode) {
+		this.userid = userid;
+		this.usernm =usernm;
+		this.pass = pass;
+		this.reg_dt = reg_dt;
+		this.alias =alias;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+		// TODO Auto-generated constructor stub
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -59,6 +71,8 @@ public class UserVo {
 					//return new SimpleDateFormat("yyyy.MM.dd").format(this.reg_dt);
 		}
 	}
+	
+	
 	public String getAlias() {
 		return alias;
 	}

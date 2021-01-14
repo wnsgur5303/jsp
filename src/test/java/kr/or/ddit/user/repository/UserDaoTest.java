@@ -2,6 +2,7 @@ package kr.or.ddit.user.repository;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -62,18 +63,22 @@ public class UserDaoTest {
 		/***Then***/
 		assertEquals(5, user.size());
 	}
-	
-	@Test
-	public void selectUserNotExsisTest() {
 
+	@Test
+	public void modifyUserTest(){
 		/***Given***/
 		UserDao userDao = new UserDao();
-		String userid = "asdsad";
+		
+		//userid,usernm,pass,reg_dt,alias,addr1,addr2,zipcode
+		UserVo uservo = new UserVo("ddit","대덕인재","dditpass", new Date(), 
+				"개발원_m", "대전 중구 중앙로 76","4층 대덕인재개발원","34940");
 
 		/***When***/
-		UserVo user = userDao.selectUser(userid);
+		int updateCnt = userDao.modifyUser(uservo); 
+// @formatter:on
+
 
 		/***Then***/
-		assertNotNull(user);
+		assertEquals(1, updateCnt);
 	}
 }

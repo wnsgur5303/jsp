@@ -23,24 +23,48 @@
 		
 		
 		
-		
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>		
 <script type="text/javascript">
 //문서 로딩이 완료되고 나서 실행되는 영역
 	$(function(){
+		//주소 검색 버튼이 클릭되었을 때 다음주소 api 팝업을 연다
+		$("#addrBtn").on("click",function(){
+			new daum.Postcode({
+				oncomplete : function(data) {
+					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+					// 예제를 참고하여 다양한 활용법을 확인해 보세요.
+					console.log(data)
+					
+					$("#addr1").val(data.roadAddress);
+					$("#zipcode").val(data.zonecode);
+					//data.roadAddress; //도로주소
+					//data.zonecode; //우편번호
+					
+					//사용자 편의성을 위해 상세주소 입력 input 태그로 focus 설정
+					$("#addr2").focus();
+				}
+			}).open();
+		})
 		
-		$("#btn").on("click",function(){
+		
+		$("#abtn").on("click",function(){
 			
 			//this : 클릭 이베트가 발생한 element
 			//data-userId ==> data-userid, 속성명은 대소분자 무시하고 소분자로 인식
-			$(".form-horizontal").submit();
+			$("#frm").submit();
 		});
 		
 	});
+	
+
 </script>		
 </head>
 
 <body>
-
+<form id ="frm2" action="<%=request.getContextPath() %>/user">
+	<input type="hidden" id="userid" name = "userid" value=""/>
+</form>
+	
 <%@include file = "/common/header.jsp"%>
 
 <div class="container-fluid">
@@ -50,15 +74,12 @@
 	<%@include file="/common/left.jsp"%>
 </div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-
 <div class="row">
 	<div class="col-sm-8 blog-main">
 		<h2 class="sub-header">사용자</h2>
 		<div class="table-responsive">
-			
-			<form class="form-horizontal" role="form" action="<%=request.getContextPath() %>/userModify">
-			<%UserVo user = (UserVo)request.getAttribute("user");%>
-			<input type="hidden" id="userid" name = "userid" value="<%=user.getUserid() %>"/>
+		<%UserVo user = (UserVo)request.getAttribute("user");%>
+			<form id = "frm" class="form-horizontal" role="form" action="<%=request.getContextPath() %>/userModify" method="post">
 				<input type="hidden" name ="userid" value="<%=user.getUserid() %>"/>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
@@ -66,66 +87,87 @@
 							<label class="control-label"><%=user.getUserid() %></label>
 						</div>
 					</div>
+
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getUsernm()%></label>
+							<input type="text" class="form-control" id="usernm" name="usernm"
+								placeholder="사용자 이름" value="<%=user.getUsernm()%>">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getPass()%></label>
+							<input type="text" class="form-control" id="pass" name="pass"
+								placeholder="사용자 아이디" value="<%=user.getPass()%>">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getReg_dt_fmt()%></label>
+							<input type="text" class="form-control" id="reg_dt" name="reg_dt"
+								placeholder="사용자 아이디" value="<%=user.getReg_dt_fmt()%>">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getAlias()%></label>
+							<input type="text" class="form-control" id="alias" name="alias"
+								placeholder="사용자 아이디" value="<%=user.getAlias()%>">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">도로주소</label>
-						<div class="col-sm-10">
-							<label class="control-label"><%=user.getAddr1()%></label>
-						</div>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="addr1" name="addr1"
+								placeholder="사용자 아이디" <%=user.getAddr1()%>>
+								
+						</div>						
+							<div class="clo-sm-2">
+								<button type="button" id="addrBtn" class="btn btn-default">주소검색</button>
+							</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getAddr2()%></label>
+							<input type="text" class="form-control" id="addr2" name="addr2"
+								placeholder="사용자 아이디" value="<%=user.getAddr2()%>">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">우편번호 코드</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getZipcode()%></label>
+							<input type="text" class="form-control" id="zipcode" name="zipcode"
+								placeholder="사용자 아이디" value="<%=user.getZipcode()%>">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">업로드파일명</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getRealfilename()%></label>
+							<input type="text" class="form-control" id="filename" name="filename"
+								placeholder="사용자 아이디" value="<%=user.getRealfilename()%>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">실제파일경로</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getRealfilename()%></label>
+							<input type="text" class="form-control" id="realfilename" name="realfilename"
+								placeholder="사용자 아이디" value="<%=user.getRealfilename()%>">
 						</div>
-					</div>							
+					</div>
+					<a class="btn btn-default pull-right" id ="abtn">수정완료</a>							
 				</form>
 
 		</div>
 
-		<a id ="btn" class="btn btn-default pull-right">사용자 수정</a>
-		
+	
 		<div class="text-center">
 
 		</div>

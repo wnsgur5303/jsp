@@ -50,16 +50,22 @@ public class UserService implements UserServiceI{
 	}
 
 	@Override
-	public int insertUser(UserVo vo) {
-		
-		return (int)userDao.insertUser(vo);
-	}
-
-	@Override
 	public int selectAllUserCnt() {
 		
 		
 		return userDao.selectAllUserCnt();
+	}
+
+	@Override
+	public int modifyUser(UserVo uservo) {
+		
+		return userDao.modifyUser(uservo);
+	}
+
+	@Override
+	public int registUser(UserVo uservo) {
+		
+		return userDao.registUser(uservo);
 	}
 	
 }
