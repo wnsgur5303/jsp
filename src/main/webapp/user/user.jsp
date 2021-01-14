@@ -28,11 +28,16 @@
 //문서 로딩이 완료되고 나서 실행되는 영역
 	$(function(){
 		
-		$("#btn").on("click",function(){
-			
-			//this : 클릭 이베트가 발생한 element
-			//data-userId ==> data-userid, 속성명은 대소분자 무시하고 소분자로 인식
-			$(".form-horizontal").submit();
+		$("#modifyBtn").on('click',function(){
+			$("#frm").attr("method","get");
+			$("#frm").attr("action","<%=request.getContextPath()%>/userModify");
+			$("#frm").submit();
+		});
+		
+		$("#deleteBtn").on('click',function(){
+			$("#frm").attr("method","post");
+			$("#frm").attr("action","<%=request.getContextPath()%>/deleteUser");
+			$("#frm").submit();
 		});
 		
 	});
@@ -42,6 +47,12 @@
 <body>
 
 <%@include file = "/common/header.jsp"%>
+
+<%UserVo user = (UserVo)request.getAttribute("user");%>
+
+<form id = "frm">
+<input type="hidden" id="userid" name = "userid" value="<%=user.getUserid() %>"/>
+</form>
 
 <div class="container-fluid">
 		<div class="row">
@@ -56,9 +67,16 @@
 		<h2 class="sub-header">사용자</h2>
 		<div class="table-responsive">
 			
-			<form class="form-horizontal" role="form" action="<%=request.getContextPath() %>/userModify">
-			<%UserVo user = (UserVo)request.getAttribute("user");%>
-			<input type="hidden" id="userid" name = "userid" value="<%=user.getUserid() %>"/>
+			<form class="form-horizontal" role="form">	
+			
+					<div class="form-group">
+						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+						<img src="<%=request.getContextPath() %>/profile/<%=user.getUserid() %>.png">
+						</div>
+					</div>
+			
+			
 				<input type="hidden" name ="userid" value="<%=user.getUserid() %>"/>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
@@ -123,12 +141,10 @@
 				</form>
 
 		</div>
-
-		<a id ="btn" class="btn btn-default pull-right">사용자 수정</a>
-		
-		<div class="text-center">
-
-		</div>
+<div class="form-group"></div>
+		<button type ="button" id = "modifyBtn" class="btn btn-default pull-right">사용자 수정</button>
+		<button type ="button" id = "deleteBtn" class="btn btn-default pull-right">사용자 삭제</button>
+</div>
 	</div>
 </div>
 	</div>

@@ -93,5 +93,17 @@ public class UserDao implements UserDaoI{
 		return insertCnt;
 	}
 
-
+	@Override
+	public int deleteUser(String userid) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		//필드로 빼면 안된다(시스템을 사용하는 사람이 여럿이다. 연결이 분리되어야함) 서로 다른 트랜잭션이라 그때 그때 생성야함
+		int deleteCnt = sqlSession.delete("users.deleteUser", userid);
+		if(deleteCnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return deleteCnt;
+	}
 }

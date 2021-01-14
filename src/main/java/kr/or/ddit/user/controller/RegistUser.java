@@ -74,7 +74,8 @@ public class RegistUser extends HttpServlet {
 			
 			  int updateCnt = 0;
 			  
-			  try { //이쪽이 같이한 방법
+			  /*try { //이쪽이 같이한 방법
+				  
 			  updateCnt = userService.registUser(uservo);
 			  
 			  
@@ -82,7 +83,7 @@ public class RegistUser extends HttpServlet {
 			  
 			  doGet(request, response);
 			  
-			  }
+			  }*/
 			 
 			if (cnt == 1) {
 				// doGet(request,response); 가능

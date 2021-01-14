@@ -58,5 +58,11 @@
 								#{alias},#{addr1},#{addr2},#{zipcode},
 								#{filename},#{realfilename})
   </insert>
+  
+  <delete id="deleteUser" parameterType="String">
+  	delete users
+  	where userid = #{value}
+  </delete>
+
 
 </mapper>

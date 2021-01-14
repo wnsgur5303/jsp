@@ -31,4 +31,6 @@ public interface UserDaoI {
 	int modifyUser(UserVo uservo);
 	
 	int registUser(UserVo uservo);
+
+	int deleteUser(String userid);
 }
