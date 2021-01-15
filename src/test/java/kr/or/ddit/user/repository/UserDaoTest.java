@@ -33,7 +33,6 @@ public class UserDaoTest {
 		/*
 		 * @Before ==> @Test registUser ==> @After 17건
 		 */
-		
 		/*
 		 * @Before ==> @Test registUser ==> @After 17 + 1(testUser) -1(ddit_n) +1
 		 * (ddit_n) -1(testUser)
@@ -59,7 +58,7 @@ public class UserDaoTest {
       List<UserVo> userList = userDao.selectAllUser();
 
       /***Then***/
-      assertEquals(16, userList.size());
+      assertEquals(17, userList.size());
    }
    
    //사용자 아이디를 이용하여 특정 사용자 정보 조회
@@ -98,7 +97,7 @@ public class UserDaoTest {
       int userCnt = userDao.selectAllUserCnt();
 
       /***Then***/
-      assertEquals(16, userCnt);
+      assertEquals(17, userCnt);
    }
    
    @Test
@@ -137,7 +136,7 @@ public class UserDaoTest {
    public void deleteUserTest() {
       /***Given***/
       //해당 테스트가 실행될 때는 testUser라는 사용자가 before 메소드에 의해 등록이 된상태
-      String userid = "ddit_n";
+      String userid = "testUser";
       
       /***When***/
       int deleteCnt = userDao.deleteUser(userid);
