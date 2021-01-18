@@ -6,6 +6,7 @@ import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.emp.model.EmpDao;
 import kr.or.ddit.emp.model.EmpVo;
 import kr.or.ddit.emp.repository.EmpDaoI;
+import kr.or.ddit.user.model.UserVo;
 
 public class EmpService implements EmpServiceI{
 	private EmpDaoI empDao = new EmpDao();
@@ -16,7 +17,7 @@ public class EmpService implements EmpServiceI{
 	}
 
 	@Override
-	public EmpVo selectUser(int no) {
+	public EmpVo selectEmp(int no) {
 		return empDao.selectEmp(no);
 	}
 
@@ -25,4 +26,9 @@ public class EmpService implements EmpServiceI{
 		return empDao.selectPagingEmp(vo);
 	}
 
+	@Override
+	public int modifyEmp(EmpVo empVo) {
+		
+		return empDao.modifyEmp(empVo);
+	}
 }

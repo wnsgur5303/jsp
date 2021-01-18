@@ -22,7 +22,24 @@
 		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
 		
 </head>
-
+<script type="text/javascript">
+//문서 로딩이 완료되고 나서 실행되는 영역
+	$(function(){
+		
+		$("#modifyBtn").on('click',function(){
+			$("#frm").attr("method","get");
+			$("#frm").attr("action","<%=request.getContextPath()%>/empModify");
+			$("#frm").submit();
+		});
+		
+		$("#deleteBtn").on('click',function(){
+			$("#frm").attr("method","post");
+			$("#frm").attr("action","<%=request.getContextPath()%>/deleteUser");
+			$("#frm").submit();
+		});
+		
+	});
+	</script>
 <body>
 
 	
@@ -36,6 +53,9 @@
 </div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
 <%EmpVo vo = (EmpVo)request.getAttribute("empInfo"); %>
+<form id = "frm">
+<input type="hidden" id="empno" name = "empno" value="<%=vo.getEmpno() %>"/>
+</form>
 <div class="row">
 	<div class="col-sm-8 blog-main">
 		<h2 class="sub-header">사원</h2>
@@ -59,7 +79,7 @@
 				</tr>
 				<tr>
 					<th>입사일자</th>
-					<th><%=vo.getHiredate() %></th>
+					<th><%=vo.getHiredate_fmt() %></th>
 				</tr>
 				<tr>
 					<th>급여</th>
@@ -75,18 +95,10 @@
 				</tr>
 			</table>
 		</div>
-
-		<a class="btn btn-default pull-right">사용자 등록</a>
-
-		<div class="text-center">
-			<ul class="pagination">
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-			</ul>
-		</div>
+<div class="form-group"></div>
+		<button type ="button" id = "modifyBtn" class="btn btn-default pull-right">사용자 수정</button>
+		<button type ="button" id = "deleteBtn" class="btn btn-default pull-right">사용자 삭제</button>
+</div>
 	</div>
 </div>
 	</div>

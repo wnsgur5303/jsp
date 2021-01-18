@@ -28,4 +28,14 @@
 	where rn BETWEEN (#{page}-1)* #{pageSize} +1 and #{page} * #{pageSize}
   </select>
   
+    <update id="modifyEmp" parameterType="empVo">
+  	UPDATE emp set ename = #{ename},
+					job = #{job},
+					mgr = #{mgr},
+					sal = #{sal},
+					comm = #{comm},
+					deptno = #{deptno}
+					
+					where empno = #{empno}
+  </update>
 </mapper>

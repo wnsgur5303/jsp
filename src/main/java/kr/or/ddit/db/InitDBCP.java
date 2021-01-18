@@ -26,7 +26,6 @@ public class InitDBCP extends HttpServlet {
 	public void init() throws ServletException{
 		logger.debug("InitDBCP.init()");
 		//요청을 안했는데도 초기화가 됐다 - 설정때문에 그렇다.
-		
 		//커넥션 풀 생성
 		//application scope에 커넥션 풀 저장	
 		BasicDataSource bs = new BasicDataSource();
@@ -35,13 +34,13 @@ public class InitDBCP extends HttpServlet {
 		bs.setUsername("wnsgur5303");
 		bs.setPassword("java");
 		bs.setInitialSize(20);//초기사이즈
-		
 		//dbcp.jsp에서는 application scope 저장된 커넥션 풀을 사용하여 컨넥션 객체를
 		//얻고 해제하는 과정을 반복 - 시간체크
 		//application ==> ServletContext
-		
 		ServletContext sc = getServletContext();
 		sc.setAttribute("bs", bs);
 	}
+	
+	
 	
 }

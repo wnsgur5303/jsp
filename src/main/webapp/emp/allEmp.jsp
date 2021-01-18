@@ -22,9 +22,26 @@
 		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
 		
 </head>
-
+<script type="text/javascript">
+//문서 로딩이 완료되고 나서 실행되는 영역
+	$(function(){
+		
+		$(".emp").on("click",function(){
+			
+			//this : 클릭 이베트가 발생한 element
+			//data-userId ==> data-userid, 속성명은 대소분자 무시하고 소분자로 인식
+			var userid = $(this).data("empno");
+			$("#empno").val(userid);
+			$("#frm").submit();
+		});
+		
+	});
+</script>	
 <body>
 
+<form id ="frm" action="<%=request.getContextPath() %>/empInfo">
+	<input type="hidden" id="empno" name = "empno" value=""/>
+</form>
 	
 <%@include file = "/common/header.jsp"%>
 
@@ -48,11 +65,11 @@
 					<th>입사일자</th>
 				</tr>
 				<%for(EmpVo vo : list){ %>
-				<tr>
-					<td><a href="<%=request.getContextPath() %>/empInfo?empno=<%=vo.getEmpno() %>"><%=vo.getEmpno() %></a></td>
+				<tr class ="emp" data-empno="<%=vo.getEmpno() %>">
+					<td><%=vo.getEmpno() %></td>
 					<td><%=vo.getEname() %></td>
 					<td><%=vo.getJob() %></td>
-					<td><%=vo.getHiredate() %></td>
+					<td><%=vo.getHiredate_fmt() %></td>
 				</tr>
 				<% }%>
 

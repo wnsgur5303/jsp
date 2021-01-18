@@ -13,5 +13,7 @@ public interface EmpDaoI {
 	EmpVo selectEmp(int no);
 	
 	List<EmpVo> selectPagingEmp(PageVo vo);
+	
+	int modifyEmp(EmpVo empvo);
 
 }
