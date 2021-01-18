@@ -9,7 +9,7 @@
     <!--common_lib.jsp 의 내용을 지금 기술되는 부분에 코드를 복사해서 붙여넣기 -->
     
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-	<link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
 
 	<script>
 	$(function(){
@@ -97,7 +97,7 @@
 
     <div class="container">
 
-      <form id = "frm" class="form-signin" action="<%=request.getContextPath() %>/loginController" method="post">
+      <form id = "frm" class="form-signin" action="${pageContext.request.contextPath}/loginController" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputid" class="sr-only">userid</label>
         <input type="text" id="userid" class="form-control" 

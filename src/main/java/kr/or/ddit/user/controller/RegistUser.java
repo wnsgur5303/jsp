@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
+import javax.websocket.Session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +39,9 @@ public class RegistUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.getRequestDispatcher("/user/registUser.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -87,8 +92,9 @@ public class RegistUser extends HttpServlet {
 			 
 			if (cnt == 1) {
 				// doGet(request,response); 가능
-				request.getRequestDispatcher(request.getContextPath() + "/pagingUser").forward(request, response);
+				request.getRequestDispatcher(request.getContextPath()+"/pagingUser").forward(request, response);
 			} else {
+				
 				response.sendRedirect("/user/registUser.jsp");
 				// request.getRequestDispatcher("/user").forward(request, response);
 			}

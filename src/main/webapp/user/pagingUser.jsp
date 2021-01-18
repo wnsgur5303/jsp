@@ -1,6 +1,8 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="kr.or.ddit.common.model.PageVo"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -91,23 +93,22 @@
 				햔재 사용자수	: 16명
 				페이지 사이즈	: 5
 				전체 페이지 수	: 4페이지 -->
-				<%PageVo vo = (PageVo)request.getAttribute("pageVo"); %>
 				<li class="prev">
-				<a href="<%=request.getContextPath() %>/pagingUser?page=1&pageSize=<%=vo.getPageSize() %>">«</a>
+				<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.getPageSize}">«</a>
 				</li>
-				<%int cnt =(int)(request.getAttribute("allpage"));
-				for(int i = 1; i < cnt+1; i++){
-				if(vo.getPage() == i){%>
-					
-				<li class="active"><span><%=i%></span></li>
-					
-				<%}else{
-				%>
-				
-				<li><a href="<%=request.getContextPath() %>/pagingUser?page=<%=i%>&pageSize=<%=vo.getPageSize() %>"><%=i%></a></li>
-			<% }}%>
+				<c:set var = "cnt" value="${allpage}"/>
+				<c:ForEach begin ="1" end="${allpage}" var="i">
+					<c:choose>
+						<c:when test ="${pageVo.page == i}">
+						<li class="active"><span>${i}</span></li>
+						</c:when>
+						<c:otherwise>
+						<li><a href="${pageContext.request.contextPath}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:ForEach>
 			<li class="next">
-				<a href="<%=request.getContextPath() %>/pagingUser?page=<%=cnt%>&pageSize=<%=vo.getPageSize() %>">»</a>
+				<a href="${pageContext.request.contextPath}/pagingUser?page=${cnt}&pageSize=${pageVo.getPageSize}">»</a>
 			</li>
 			</ul>
 		</div>

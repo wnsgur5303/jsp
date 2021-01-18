@@ -15,11 +15,11 @@
 
 <title>Jsp</title>
 
-<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
 <script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
     	<%@include file="/common/common_lib.jsp"%>
-		<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 		
 </head>
 <script type="text/javascript">
@@ -28,13 +28,13 @@
 		
 		$("#modifyBtn").on('click',function(){
 			$("#frm").attr("method","get");
-			$("#frm").attr("action","<%=request.getContextPath()%>/empModify");
+			$("#frm").attr("action","${pageContext.request.contextPath}/empModify");
 			$("#frm").submit();
 		});
 		
 		$("#deleteBtn").on('click',function(){
 			$("#frm").attr("method","post");
-			$("#frm").attr("action","<%=request.getContextPath()%>/deleteUser");
+			$("#frm").attr("action","${pageContext.request.contextPath}/deleteUser");
 			$("#frm").submit();
 		});
 		

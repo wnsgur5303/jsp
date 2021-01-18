@@ -15,11 +15,11 @@
 
 <title>Jsp</title>
 
-<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
 <script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
     	<%@include file="/common/common_lib.jsp"%>
-		<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 		
 </head>
 <script type="text/javascript">
@@ -52,7 +52,7 @@
 	<div class="col-sm-8 blog-main">
 		<h2 class="sub-header">사원</h2>
 		<div class="table-responsive">
-			<form id = "frm" class="form-horizontal" role="form" action="<%=request.getContextPath() %>/empModify" method="post">
+			<form id = "frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/empModify" method="post">
 				<input type="hidden" name ="empno" value="<%=vo.getEmpno() %>"/>
 				
 					<div class="form-group">

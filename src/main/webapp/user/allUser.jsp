@@ -1,5 +1,6 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,10 +17,10 @@
 <title>Jsp</title>
 <%@include file="/common/common_lib.jsp"%>
 
-		<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+		<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
 		<script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
-		<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-		<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 		
 </head>
 
@@ -35,7 +36,6 @@
 	<%@include file="/common/left.jsp"%>
 </div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-<%List<UserVo> list = (List<UserVo>)request.getAttribute("userList"); %>
 <div class="row">
 	<div class="col-sm-8 blog-main">
 		<h2 class="sub-header">사용자</h2>
@@ -47,21 +47,19 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-				<%
-				for(UserVo vo : list){ 
-				%>
+				<c:forEach items="${userList}" var = "user">
 				<tr>
-					<td><%=vo.getUserid() %></td>
-					<td><%=vo.getUsernm() %></td>
-					<td><%=vo.getAlias() %></td>
-					<td><%=vo.getReg_dt_fmt() %></td>
+					<td>${user.userid}</td>
+					<td>${user.usernm}</td>
+					<td>${user.alias}</td>
+					<td>${user.getReg_dt_fmt()}</td>
 				</tr>
-				<% }%>
+				</c:forEach>
 
 			</table>
 		</div>
 
-		<a class="btn btn-default pull-right" href="<%=request.getContextPath() %>/insertUser">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/insertUser">사용자 등록</a>
 
 		<div class="text-center">
 			<ul class="pagination">

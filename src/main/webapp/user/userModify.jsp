@@ -16,10 +16,10 @@
 
 <title>Jsp</title>
 	<%@include file="/common/common_lib.jsp"%>
-<%-- 	<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet">
+<%-- 	<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 	<script src="/js/bootstrap.js"></script> --%>
-	<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-	<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 		
 		
 		
@@ -61,7 +61,7 @@
 </head>
 
 <body>
-<form id ="frm2" action="<%=request.getContextPath() %>/user">
+<form id ="frm2" action="${pageContext.request.contextPath}/user">
 	<input type="hidden" id="userid" name = "userid" value=""/>
 </form>
 	
@@ -79,7 +79,7 @@
 		<h2 class="sub-header">사용자</h2>
 		<div class="table-responsive">
 		<%UserVo user = (UserVo)request.getAttribute("user");%>
-			<form id = "frm" class="form-horizontal" role="form" action="<%=request.getContextPath() %>/userModify" method="post">
+			<form id = "frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/userModify" method="post">
 				<input type="hidden" name ="userid" value="<%=user.getUserid() %>"/>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
