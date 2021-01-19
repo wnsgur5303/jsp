@@ -58,18 +58,6 @@ public class UserVo {
 		this.reg_dt = reg_dt;
 	}
 	
-	public String getReg_dt_fmt() {
-
-		if(this.reg_dt == null) {
-			return "";
-		}else {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-					return sdf.format(this.reg_dt);
-				
-		}
-	}
-	
-	
 	public String getAlias() {
 		return alias;
 	}
