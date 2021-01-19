@@ -38,14 +38,15 @@
 				out.write("userid-스크립플릿 : " + (String)pageContext.getAttribute("userid"));
 			}
 		%>
-	 
 	 <c:if test=" ${userid} == 'brown' ">
 	 	틀린예 userid : ${userid}<br>
 	 </c:if>
-	 
 	 <c:if test="${userid == 'brown'}">
 	 	<br>올바른 예 userid : ${userid}<br>
 	 </c:if>
+	 
+	 
+	 
 	 
 	 <h3>choose : 일반 if, else if, else</h3>
 	 <c:choose>

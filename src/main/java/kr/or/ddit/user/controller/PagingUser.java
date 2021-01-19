@@ -45,7 +45,7 @@ public class PagingUser extends HttpServlet {
 		//page는 1로 pageSize 5로 코드를 작성
 		//파라미터가 존재하면 해당 파라미터를 사용
 		
-		request.setCharacterEncoding("UTF-8");
+		/* request.setCharacterEncoding("utf-8"); */
 		
 		String pageParam = request.getParameter("page");
 		String pageSizeParam = request.getParameter("pageSize");

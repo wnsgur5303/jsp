@@ -69,21 +69,19 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-				<%
-				for(UserVo vo : list){ 
-				%>
-				<tr class ="user" data-userid="<%=vo.getUserid() %>">
-					<td><%=vo.getUserid() %></td>
-					<td><%=vo.getUsernm() %></td>
-					<td><%=vo.getAlias() %></td>
-					<td><%=vo.getReg_dt_fmt() %></td>
+				<c:forEach items="${userList}" var = "user">
+				<tr class ="user" data-userid="${user.userid}">
+					<td>${user.userid}</td>
+					<td>${user.usernm}</td>
+					<td>${user.alias}</td>
+					<td>${user.getReg_dt_fmt()}</td>
 				</tr>
-				<% }%>
+				</c:forEach>
 
 			</table>
 		</div>
 
-		<a class="btn btn-default pull-right" href="../user/registUser.jsp">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/registUser">사용자 등록</a>
 	
 		<div class="text-center">
 			<ul class="pagination">
@@ -94,10 +92,10 @@
 				페이지 사이즈	: 5
 				전체 페이지 수	: 4페이지 -->
 				<li class="prev">
-				<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.getPageSize}">«</a>
+				<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.pageSize}">«</a>
 				</li>
-				<c:set var = "cnt" value="${allpage}"/>
-				<c:ForEach begin ="1" end="${allpage}" var="i">
+				<c:set var = "cnt" value="${allpage}"/>	
+				<c:forEach begin ="1" end="${pageVo.pageSize-1}" var="i">
 					<c:choose>
 						<c:when test ="${pageVo.page == i}">
 						<li class="active"><span>${i}</span></li>
@@ -106,9 +104,9 @@
 						<li><a href="${pageContext.request.contextPath}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
 						</c:otherwise>
 					</c:choose>
-				</c:ForEach>
+				</c:forEach>
 			<li class="next">
-				<a href="${pageContext.request.contextPath}/pagingUser?page=${cnt}&pageSize=${pageVo.getPageSize}">»</a>
+				<a href="${pageContext.request.contextPath}/pagingUser?page=${cnt}&pageSize=${pageVo.pageSize}">»</a>
 			</li>
 			</ul>
 		</div>

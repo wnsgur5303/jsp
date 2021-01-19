@@ -1,6 +1,7 @@
 <%@page import="kr.or.ddit.common.model.PageVo"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -149,20 +150,16 @@
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">업로드파일명</label>
 						<div class="col-sm-10">
-						<%String filename = request.getParameter("filename");
-								filename = filename == null ? "" : filename;%>
 							<input type="text" class="form-control" id="filename" name="filename"
-								placeholder="사용자 업로드파일명" value="${param.filename}">
+								placeholder="사용자 업로드파일명" value="">
 								
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">실제파일경로</label>
 						<div class="col-sm-10">
-						<%String realfilename = request.getParameter("realfilename");
-								realfilename = realfilename == null ? "" : realfilename;%>
-							<input type="text" class="form-control" id="realrealfilename" name="realrealfilename"
-								placeholder="사용자 실제파일경로" value="${param.realfilename}">
+							<input type="text" class="form-control" id="realfilename" name="realfilename"
+								placeholder="사용자 실제파일경로" value="">
 						</div>
 					</div>
 					<a class="btn btn-default pull-right" id ="abtn">등록하기</a>							

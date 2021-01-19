@@ -25,18 +25,11 @@ public class RegistUser extends HttpServlet {
 	UserService userService = new UserService();
 	private static final Logger logger = LoggerFactory.getLogger(RegistUser.class);
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public RegistUser() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -46,7 +39,7 @@ public class RegistUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+//		request.setCharacterEncoding("utf-8");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 
 		String userid = request.getParameter("userid");
@@ -72,7 +65,7 @@ public class RegistUser extends HttpServlet {
 			}
 			UserVo uservo = new UserVo(userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode);
 
-			uservo.setFilename(realfilename);
+			uservo.setFilename(filename);
 			uservo.setRealfilename(realfilename);
 
 			int cnt = userService.registUser(uservo);
@@ -95,11 +88,11 @@ public class RegistUser extends HttpServlet {
 				request.getRequestDispatcher(request.getContextPath()+"/pagingUser").forward(request, response);
 			} else {
 				
-				response.sendRedirect("/user/registUser.jsp");
-				// request.getRequestDispatcher("/user").forward(request, response);
+				doGet(request,response);
 			}
 		} else {
-			response.sendRedirect("/user/registUser.jsp");
+			
+			doGet(request,response);
 		}
 	}
 }

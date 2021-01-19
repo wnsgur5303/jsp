@@ -13,6 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,8 @@ import kr.or.ddit.user.service.UserServiceI;
 @WebServlet("/loginController")
 public class LoginController extends HttpServlet{
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	private static final double PI = 3.14;
 	//요청 메소드와 관련없이 서블릿이 동작하게 하려면?
 	//get으로 보내온, post 로 보내온
 	//리퀘스트 객체에대해 배우고있다.
@@ -119,6 +122,8 @@ public class LoginController extends HttpServlet{
 		//로그인 성공-> service를 통해 데이터베이스에 저장된 값과 일치할 때
 		// session에 데이터베이스에서 조회한 사용자 정보(userVo)를 저장
 		if(user != null && pass.equals(user.getPass())) {
+			HttpSession session = req.getSession();
+			session.setAttribute("S_USER", user);
 		req.getRequestDispatcher("main.jsp").forward(req, resp);
 		}
 		else {

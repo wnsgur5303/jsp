@@ -61,7 +61,6 @@ public class UserDao implements UserDaoI{
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		
 		int userCnt = sqlSession.selectOne("users.selectAllUserCnt");
-		System.out.println(userCnt);
 		sqlSession.close();
 		
 		return userCnt;
