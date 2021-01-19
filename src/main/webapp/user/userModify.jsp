@@ -1,6 +1,7 @@
 <%@page import="kr.or.ddit.common.model.PageVo"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -80,11 +81,11 @@
 		<div class="table-responsive">
 		<%UserVo user = (UserVo)request.getAttribute("user");%>
 			<form id = "frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/userModify" method="post">
-				<input type="hidden" name ="userid" value="<%=user.getUserid() %>"/>
+				<input type="hidden" name ="userid" value="${user.userid}"/>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=user.getUserid() %></label>
+							<label class="control-label">${user.userid}</label>
 						</div>
 					</div>
 
@@ -92,7 +93,7 @@
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="usernm" name="usernm"
-								placeholder="사용자 이름" value="<%=user.getUsernm()%>">
+								placeholder="사용자 이름" value="${user.usernm}">
 						</div>
 					</div>
 					
@@ -100,7 +101,7 @@
 						<label for="pass" class="col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="pass" name="pass"
-								placeholder="사용자 아이디" value="<%=user.getPass()%>">
+								placeholder="사용자 아이디" value="${user.pass}">
 						</div>
 					</div>
 					
@@ -108,7 +109,7 @@
 						<label for="userNm" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="reg_dt" name="reg_dt"
-								placeholder="사용자 아이디" value="<%=user.getReg_dt_fmt()%>">
+								placeholder="등록일시" value="<fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/>">
 						</div>
 					</div>
 					
@@ -116,7 +117,7 @@
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="alias" name="alias"
-								placeholder="사용자 아이디" value="<%=user.getAlias()%>">
+								placeholder="사용자 아이디" value="${user.alias}">
 						</div>
 					</div>
 					
