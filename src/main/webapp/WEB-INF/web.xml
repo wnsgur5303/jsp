@@ -49,7 +49,13 @@
 		<location>/error/500/500.jsp</location>
 	</error-page>
 	
+	<listener>
+		<listener-class>kr.or.ddit.listener.ApplicationListener</listener-class>
+	</listener>
 	
+	<listener>
+		<listener-class>kr.or.ddit.listener.LoginUserListener</listener-class>
+	</listener>
 	
 <!-- 	<filter> -->
 <!-- 		<filter-name>requestCounterFilter</filter-name> -->
@@ -61,10 +67,10 @@
 <!-- 	</filter-mapping> -->
 
 
-<!-- 	<filter> -->
-<!-- 		<filter-name>Encoding</filter-name> -->
-<!-- 		<filter-class>kr.or.ddit.filter.Encoding</filter-class> -->
-<!-- 	</filter> -->
+	<filter>
+		<filter-name>Encoding</filter-name>
+		<filter-class>kr.or.ddit.filter.Encoding</filter-class>
+	</filter>
 <!-- 	<filter-mapping> -->
 <!-- 		<filter-name>Encoding</filter-name> -->
 <!-- 		<url-pattern>/*</url-pattern> -->

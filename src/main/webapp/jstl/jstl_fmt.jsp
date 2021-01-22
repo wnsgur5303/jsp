@@ -16,14 +16,12 @@
 
 <c:set var="price" value="100000"/><%-- 100000(숫자) ==> 100,000(문자) --%>
 <c:set var="priceStr" value="100,000"/><%-- 100,000(문자) ==> 100000(숫자)--%>
-
 price : ${price}<br>
 price fmt : <fmt:formatNumber value="${price}"/><br>
 price fmt : <fmt:formatNumber value="${price}" type="number"/><br>
 price fmt : <fmt:formatNumber value="${price}" type="currency"/><br>
 price fmt : <fmt:formatNumber value="${price}" type="percent"/><br>
 price fmt : <fmt:formatNumber value="${price}" pattern="00000000.00"/><br>
-
 priceStr parse : <fmt:parseNumber value="${priceStr}"/>
 
 <h3>de-germany</h3>

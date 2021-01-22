@@ -46,7 +46,9 @@
 						alias = #{alias},
 						addr1 = #{addr1},
 						addr2 = #{addr2},
-						zipcode = #{zipcode}
+						zipcode = #{zipcode},
+						filename = #{filename},
+						realfilename = #{realfilename}
   				where userid = #{userid}
   </update>
   

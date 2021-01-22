@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/sumcalculation" method="post">
+<form action="${cp}/sumcalculation" method="post">
 <input type="text" name ="start" value="1">
 <input type="text" name ="end" value="10">
 <input type="submit" value="실행">

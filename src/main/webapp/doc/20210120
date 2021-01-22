@@ -1,0 +1,14 @@
+2021-01-20
+
+String contentDisposition = "form-data; name ="file"; filename="brown.png"";
+FileUtil.getFileName()을 테스트 할 수 있는 테스트 코드 작성
+
+==>brown.png
+
+TDD : Test Driven DeveIopment
+테스트코드 ==> 성공 ==> 새로운 요구사항 ==> 테스트코드 ==> 실패 ==> 운영코드 수정(refactoring)
+					새로운 요구사항 ==> 테스트코드 ==> 실패 ==> 운영코드 수정 
+					새로운 요구사항 ==> 테스트코드 ==> 실패 ==> 운영코드 수정 
+					새로운 요구사항 ==> 테스트코드 ==> 실패 ==> 운영코드 수정 
+					새로운 요구사항 ==> 테스트코드 ==> 실패 ==> 운영코드 수정 
+					새로운 요구사항 ==> 테스트코드 ==> 실패 ==> 운영코드 수정 

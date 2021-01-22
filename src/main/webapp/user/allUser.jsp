@@ -18,10 +18,10 @@
 <title>Jsp</title>
 <%@include file="/common/common_lib.jsp"%>
 
-		<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+		<link href="${cp}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
 		<script src="/js/bootstrap.js"></script><!-- Custom styles for this template -->
-		<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+		<link href="${cp}/css/dashboard.css" rel="stylesheet">
+		<link href="${cp}/css/blog.css" rel="stylesheet">
 		
 </head>
 
@@ -60,7 +60,7 @@
 			</table>
 		</div>
 
-		<a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/insertUser">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="${cp}/insertUser">사용자 등록</a>
 
 		<div class="text-center">
 			<ul class="pagination">

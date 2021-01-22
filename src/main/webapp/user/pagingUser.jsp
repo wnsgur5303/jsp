@@ -82,7 +82,7 @@
 			</table>
 		</div>
 
-		<a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/registUser">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="${cp}/registUser">사용자 등록</a>
 	
 		<div class="text-center">
 			<ul class="pagination">
@@ -93,7 +93,7 @@
 				페이지 사이즈	: 5
 				전체 페이지 수	: 4페이지 -->
 				<li class="prev">
-				<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.pageSize}">«</a>
+				<a href="${cp}/pagingUser?page=1&pageSize=${pageVo.pageSize}">«</a>
 				</li>
 				<c:set var = "cnt" value="${allpage}"/>	
 				<c:forEach begin ="1" end="${pageVo.pageSize-1}" var="i">
@@ -102,12 +102,12 @@
 						<li class="active"><span>${i}</span></li>
 						</c:when>
 						<c:otherwise>
-						<li><a href="${pageContext.request.contextPath}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+						<li><a href="${cp}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 			<li class="next">
-				<a href="${pageContext.request.contextPath}/pagingUser?page=${cnt}&pageSize=${pageVo.pageSize}">»</a>
+				<a href="${cp}/pagingUser?page=${cnt}&pageSize=${pageVo.pageSize}">»</a>
 			</li>
 			</ul>
 		</div>

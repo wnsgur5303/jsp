@@ -22,8 +22,6 @@ public class Encoding implements Filter{
 	private Map<String, Integer> requestCountMap = new HashMap<String, Integer>();
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		logger.debug("init()");
-		logger.debug("두번째");
 	}
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

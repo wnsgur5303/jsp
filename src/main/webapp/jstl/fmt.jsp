@@ -27,8 +27,6 @@
 		</fmt:message>
 	</fmt:bundle>	<br>
 	
-	
-	
 	<fmt:setLocale value="ja"/>
 		<fmt:bundle basename="kr.or.ddit.msg.msg">
 		<fmt:message key="LANG"/><br>

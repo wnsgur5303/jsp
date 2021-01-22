@@ -27,10 +27,7 @@ public class RequestCounterFilter implements Filter{
 		
 		ServletContext sc = filterConfig.getServletContext();
 		sc.setAttribute("requestCountMap", requestCountMap);
-		
-		
 	}
-
 	//filter.doFilter = >servlet.do?? ==  servlet.service 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -59,8 +56,6 @@ public class RequestCounterFilter implements Filter{
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
 	}
 	
-
 }

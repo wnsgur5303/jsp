@@ -25,7 +25,6 @@ public class DefaultParameterFilter implements Filter{
 		//인자로 들어온request 객체를 이용하여 wrapper로 만들고
 		//chain.doFilter 메소드를 이용하여 다른 필터나 서블릿으로 요청을 전달할때
 		//wrapper 클래스를 전달
-		
 		DefaultParameterRequestWrapper wrapper = new DefaultParameterRequestWrapper
 				((HttpServletRequest)request);
 		

@@ -11,7 +11,6 @@
 </head>
 <body>
 	<%-- 날짜(java.util.Date) 객체를 생성하여 속성 이름 date로 pageContext에 저장 --%>
-	<c:set var="price" value = "100000"/>
 	<c:set var="date" value="<%=new Date()%>"/>
 	<c:set var="dateStr" value="2021.01.19"></c:set>
 	
@@ -23,9 +22,9 @@
 	date fmt : <fmt:formatDate value="${date}" type="date" dateStyle="short"/><br>
 	date fmt : <fmt:formatDate value="${date}" type="time"/><br>
 	date fmt : <fmt:formatDate value="${date}" type="both"/><br>
-	
 	date fmt (custom pattern) : <fmt:formatDate value="${date}" pattern="yyyy.MM.dd"/>
-	
 	parse dateStrg : <fmt:parseDate value="${dateStr}" pattern="yyyy.MM.dd"/>
+	
+	
 </body>
 </html>

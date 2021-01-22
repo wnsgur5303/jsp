@@ -36,7 +36,7 @@ private static final Logger logger = LoggerFactory.getLogger(SessionCheckFilter.
 		//세션 체크가 필요 없는 주소 : login.jsp, loginController
 		if(uri.endsWith("login.jsp") || uri.endsWith("loginController") ||
 				uri.contains("/css/") || uri.contains("/js/") ||
-				uri.endsWith("/image/")) {
+				uri.contains("/image/")) {
 			chain.doFilter(request, response);
 			logger.debug("세션 체크가 필요없는 주소");
 		}
