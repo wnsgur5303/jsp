@@ -31,6 +31,7 @@ public class ProfileDownload extends HttpServlet{
 		UserVo userVo = userService.selectUser(userid);
 		String filename = "";
 		
+		
 		resp.setHeader("Content-Disposition", "attachment; filename=" + userVo.getFilename());
 		//userid 파라미터를 이용하여
 		//userService 객체를 통해 사용자의 사진 파일 이름을 획득
